@@ -115,13 +115,18 @@ class AddressBookContact{
 
 }
 
-let contact1 = new AddressBookContact("Karl", "Rock", "Hengrabari", "Guwahati", "Assam", "781036", "9999", "karlrock@gmail.com");
+let contactsArray = new Array();
+let contact1 = new AddressBookContact();
+contact1.setFirstName = 'John';
+contact1.setLastName = 'Hopkins';
+contact1.setAddress = 'Namghar Path';
+contact1.setCity = 'Guwahati';
+contact1.setState = 'Assam';
 contact1.setZip = '781 036';
-contact1.setPhoneNumber = "91 2812728"
-console.log(contact1.toString());
-/*let contactsArray = new Array();
-let contact2 = new AddressBookContact("Nitu", "Deori", "Milan Nagar", "Dibrugarh", "Assam", "716272", "888", "nitdeori@gmail.com");
+contact1.setPhoneNumber = '91 7812728985';
+contact1.setEmail = 'johnhopkins@gmail.com';
 contactsArray.push(contact1);
-contactsArray.push(contact2);
 console.log(contactsArray);
-*/
+
+
+
