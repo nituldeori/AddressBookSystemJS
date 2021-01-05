@@ -19,6 +19,15 @@ class AddressBookContact{
         this.email = email;
     }
 
+    get getFirstName(){return this.firstName;}
+    get getLastName(){return this.lastName;}
+    get getAddress(){return this.address;}
+    get getCity(){return this.city;}
+    get getState(){return this.state;}
+    get getZip(){return this.zip;}
+    get getPhoneNumber(){return this.phoneNumber;}
+    get getEmail(){return this.email;} 
+
     set setFirstName(firstName){
         let nameRegex = RegExp('^[A-Z]{1}[a-z]{2,}$');
         if(nameRegex.test(firstName)){
@@ -117,16 +126,77 @@ class AddressBookContact{
 
 let contactsArray = new Array();
 let contact1 = new AddressBookContact();
-contact1.setFirstName = 'John';
-contact1.setLastName = 'Hopkins';
-contact1.setAddress = 'Namghar Path';
-contact1.setCity = 'Guwahati';
-contact1.setState = 'Assam';
-contact1.setZip = '781 036';
-contact1.setPhoneNumber = '91 7812728985';
-contact1.setEmail = 'johnhopkins@gmail.com';
+try{
+    contact1.setFirstName = 'John';
+    contact1.setLastName = 'Hopkins';
+    contact1.setAddress = 'Namghar Path';
+    contact1.setCity = 'Guwahati';
+    contact1.setState = 'Assam';
+    contact1.setZip = '781 036';
+    contact1.setPhoneNumber = '91 7812728985';
+    contact1.setEmail = 'johnhopkins@gmail.com';
+
+}catch(e){
+    console.error(e);
+}
+
 contactsArray.push(contact1);
 console.log(contactsArray);
 
+function editExixtingContact(firstName, lastName, newFirstName, newLastName, newAddress, newCity, newState, newZip, newPhoneNumber, newEmail){
+    let flag = 0;
+    if(contactsArray.length == 0){
+        console.log("Contacts Array is emplty!")
+    }
 
+    else{
+        for(i=0; i<contactsArray.length; i++){
+            if(contactsArray[i].getFirstName == firstName && contactsArray[i].getLastName == lastName){
+                flag = 1;
+                try{
+                    contactsArray[i].setFirstName = newFirstName;
+                    contactsArray[i].setLastName = newLastName;
+                    contactsArray[i].setAddress = newAddress;
+                    contactsArray[i].setCity = newCity;
+                    contactsArray[i].setState = newState;
+                    contactsArray[i].setZip = newZip;
+                    contactsArray[i].setPhoneNumber = newPhoneNumber;
+                    contactsArray[i].setEmail = newEmail;
+
+                } catch(e){
+                    console.error(e);
+                }
+                
+            }
+        }
+        if(flag = 0){
+            console.log("No contact with given name found!");
+        }
+    }
+}
+
+//editExixtingContact("John", "Hopkins", "Karl", "Rock", "Hengrabari", "Guwahati", "Assam", "781036", "91 8987384783", "karlrock@gmail.com");
+//console.log(contactsArray);
+
+function deleteExistingContact(firstName, lastName){
+    let flag = 0;
+    if(contactsArray.length == 0){
+        console.log("Contacts Array is emplty!")
+    }
+
+    else{
+        for(i=0; i<contactsArray.length; i++){
+            if(contactsArray[i].getFirstName == firstName && contactsArray[i].getLastName == lastName){
+                flag = 1;
+                contactsArray.splice(i,1);
+            }
+        }
+    }
+    if(flag = 0){
+        console.log("No contact with given name found!");
+    }
+
+}
+deleteExistingContact("John","Hopkins");
+console.log(contactsArray);
 
